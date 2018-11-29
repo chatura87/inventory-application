@@ -1,1 +1,2 @@
-<app-product-list [childProductList]= productList></app-product-list>
+<app-product-list [childProductList]= productList (productEmited)='getSelectedProduct($event)'></app-product-list>
+<app-product-editor *ngIf=product [product]=product></app-product-editor>
