@@ -16,13 +16,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
     this.testService.getAllProducts().subscribe(data => {
-      console.log(data);
-      this.productList = data
+      this.productList = data;
     });
   }
 
   getSelectedProduct(product: Product) {
     this.product = product;
-    console.log(product+'fdfd');
   }
 }

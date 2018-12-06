@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Product } from '../product';
 
 @Component({
@@ -9,15 +9,29 @@ import { Product } from '../product';
 })
 export class ProductEditorComponent implements OnInit {
 
-  @Input() product: Product;
-  constructor() { }
+  private _product: Product;
+  @Input() set product(value: Product) {
+    this._product = value;
+    this.setFormValues(value);
 
-  name = new FormControl();
-  price = new FormControl()
-
-  ngOnInit() {
-    this.name.setValue(this.product.name);
-    this.price.setValue(this.product.price);
   }
+
+  constructor() {
+  }
+
+  formGroup = new FormGroup({
+    name: new FormControl(),
+    price: new FormControl()
+  });
+
+  setFormValues(product: Product) {
+    this.formGroup.patchValue({
+      name: product.name,
+      price: product.price
+    })
+  }
+
+
+  ngOnInit() { }
 
 }

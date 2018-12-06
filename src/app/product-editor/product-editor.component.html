@@ -1,2 +1,4 @@
-<label> Name <input type="text" [formControl]="name"> </label> <br>
-<label> Price <input type="text" [formControl]="price"> </label> 
+<div [formGroup]=formGroup>
+    <label> Name <input type="text" formControlName="name"> </label> <br>
+    <label> Price <input type="text" formControlName="price"> </label> 
+</div>
